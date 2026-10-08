@@ -17,13 +17,16 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
-.ipynb_checkpoints/
 *.egg-info/
 build/
 dist/
 
+# Secrets and local config
+.env
+.env.*
+
 # Notebooks
-notebooks/.ipynb_checkpoints/
+.ipynb_checkpoints/
 
 # macOS
 .DS_Store
