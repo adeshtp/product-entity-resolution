@@ -1,0 +1,128 @@
+{
+  "test_split_evaluation": {
+    "run_count": 1,
+    "note": "The TEST split was read once, here, after every modelling decision was frozen. No test result was used to change the split, retrieval, features, model or thresholds."
+  },
+  "frozen": {
+    "match_threshold": 0.9856394449,
+    "review_threshold": 0.5182070609145072,
+    "one_match_per_a": true,
+    "candidate_pool_protocol": "PRIMARY: all Catalog B records",
+    "retrieval": "char_wb (3,4) TF-IDF fitted on TRAIN A + TRAIN B names",
+    "model": "Pipeline(StandardScaler, LogisticRegression(class_weight=balanced))"
+  },
+  "retrieval": {
+    "recall_at_5": 0.9573170731707317,
+    "recall_at_10": 0.9939024390243902,
+    "recall_at_20": 1.0,
+    "matchable_a_records": 164,
+    "lost_in_blocking_at_20": 0,
+    "remaining_candidate_fraction": 0.018315018315018316,
+    "reduction_ratio": 0.9816849816849816,
+    "candidate_pool_protocol": "PRIMARY: all Catalog B records",
+    "top_k": 20,
+    "matcher_sees_pairs": 3280,
+    "full_grid_pairs": 179088
+  },
+  "pair_level_test": {
+    "evaluated_candidate_pairs": 3280,
+    "gold_pairs_in_evaluated_set": 164,
+    "precision": 0.8571428571428571,
+    "recall": 0.5487804878048781,
+    "f1": 0.6691449814126395,
+    "macro_precision": 0.9169178852643419,
+    "macro_recall": 0.7719833119383825,
+    "macro_f1": 0.8274988935039671,
+    "true_positives": 90,
+    "false_positives": 15,
+    "false_negatives": 74,
+    "confusion_matrix": [
+      [
+        3101,
+        15
+      ],
+      [
+        74,
+        90
+      ]
+    ],
+    "false_merges": 15,
+    "false_non_matches": 74,
+    "pair_recall_ceiling": 0.9854147675478578
+  },
+  "product_level_test_model_ranking": {
+    "ranked_by": "score",
+    "matchable_a_records": 164,
+    "hits_at_1": 0.8109756097560976,
+    "hits_at_5": 0.9817073170731707,
+    "hits_at_10": 0.9939024390243902,
+    "mrr": 0.8809989239598279,
+    "never_found": 0
+  },
+  "product_level_test_retrieval_ranking": {
+    "ranked_by": "rank",
+    "matchable_a_records": 164,
+    "hits_at_1": 0.7804878048780488,
+    "hits_at_5": 0.9573170731707317,
+    "hits_at_10": 0.9939024390243902,
+    "mrr": 0.8575445218737902,
+    "never_found": 0
+  },
+  "queue_test": {
+    "candidate_pairs": 3280,
+    "match_pairs": 105,
+    "review_pairs": 533,
+    "no_match_pairs": 2642,
+    "review_queue_size": 533,
+    "review_queue_rate": 0.1625,
+    "a_records": 164,
+    "a_records_matched": 105
+  },
+  "gold_coverage_by_decision_test": {
+    "evaluated_gold_pairs": 164,
+    "gold_pairs_as_MATCH": 90,
+    "gold_pairs_as_REVIEW": 65,
+    "gold_pairs_as_NO_MATCH": 9,
+    "recall_match_only": 0.5487804878048781,
+    "recall_match_plus_review": 0.9451219512195121,
+    "false_non_matches_sent_to_REVIEW": 65,
+    "false_non_matches_sent_to_NO_MATCH": 9,
+    "note": "A gold pair in REVIEW was retrieved and not rejected; a human would still have to confirm it. It is NOT an automated match, so recall_match_only is the honest automated figure."
+  },
+  "end_to_end_test": {
+    "candidate_recall_at_20": 1.0,
+    "matches_lost_in_blocking": 0,
+    "pair_recall": 0.5487804878048781,
+    "end_to_end_recall": 0.5487804878048781
+  },
+  "bootstrap_95ci_by_a_product": {
+    "method": "percentile bootstrap, resampled by Catalog A product",
+    "resamples": 1000,
+    "seed": 42,
+    "units": 164,
+    "note": "Intervals reflect sampling variation across A products only. With 164 test products they are wide; treat them as a rough guide.",
+    "precision": {
+      "lower_2_5": 0.7856975967957276,
+      "upper_97_5": 0.9213580850024427
+    },
+    "recall": {
+      "lower_2_5": 0.4695121951219512,
+      "upper_97_5": 0.6280487804878049
+    },
+    "f1": {
+      "lower_2_5": 0.5945945945945945,
+      "upper_97_5": 0.7394488727235207
+    },
+    "hits_at_1": {
+      "lower_2_5": 0.7134146341463414,
+      "upper_97_5": 0.8414634146341463
+    }
+  },
+  "abstention_probe_test_diagnostic_only": {
+    "a_records_probed": 164,
+    "still_above_match_boundary": 30,
+    "abstained": 134,
+    "abstention_rate": 0.8170731707317073
+  },
+  "abstention_probe_caveat": "Every A record in Abt-Buy has at least one gold match. The benchmark contains NO true unmatched A product, so real-world NO MATCH performance CANNOT be measured and is NOT claimed. This probe removes the gold partner from the pool as a diagnostic only."
+}

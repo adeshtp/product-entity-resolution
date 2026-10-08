@@ -1,0 +1,294 @@
+{
+  "candidate_pool_protocol": "PRIMARY: all Catalog B records",
+  "thresholds": {
+    "match_threshold": 0.9856394449,
+    "match_precision_on_validation": 0.9622641509433962,
+    "precision_target": 0.95,
+    "target_reached": true,
+    "review_threshold": 0.5182070609145072,
+    "review_rule": "95th percentile of TRAIN negative-pair scores",
+    "one_match_per_a": true
+  },
+  "retrieval": {
+    "recall_at_5": 0.9503105590062112,
+    "recall_at_10": 0.9813664596273292,
+    "recall_at_20": 1.0,
+    "matchable_a_records": 161,
+    "lost_in_blocking_at_20": 0,
+    "remaining_candidate_fraction": 0.018315018315018316,
+    "reduction_ratio": 0.9816849816849816,
+    "candidate_pool_protocol": "PRIMARY: all Catalog B records",
+    "top_k": 20,
+    "matcher_sees_pairs": 3220,
+    "full_grid_pairs": 175812
+  },
+  "training": {
+    "positive_pairs": 766,
+    "negative_pairs": 18134,
+    "positive_rate": 0.040529100529100526,
+    "class_weight": "balanced",
+    "imbalance_choice": "class_weight='balanced' rather than resampling: it changes the threshold's meaning rather than the data, which keeps the mined hard negatives intact and the pipeline simpler.",
+    "negatives_mined_from": "TRAIN A x TRAIN B only"
+  },
+  "pair_level_validation": {
+    "evaluated_candidate_pairs": 3220,
+    "gold_pairs_in_evaluated_set": 166,
+    "precision": 0.9622641509433962,
+    "recall": 0.6144578313253012,
+    "f1": 0.75,
+    "macro_precision": 0.9708559033458151,
+    "macro_recall": 0.8065740368152374,
+    "macro_f1": 0.8694876783398184,
+    "true_positives": 102,
+    "false_positives": 4,
+    "false_negatives": 64,
+    "confusion_matrix": [
+      [
+        3050,
+        4
+      ],
+      [
+        64,
+        102
+      ]
+    ],
+    "false_merges": 4,
+    "false_non_matches": 64,
+    "pair_recall_ceiling": 0.9854147675478578
+  },
+  "product_level_validation": {
+    "ranked_by": "score",
+    "matchable_a_records": 161,
+    "hits_at_1": 0.8819875776397516,
+    "hits_at_5": 0.9875776397515528,
+    "hits_at_10": 1.0,
+    "mrr": 0.9252735876959479,
+    "never_found": 0
+  },
+  "product_level_by_retrieval_rank": {
+    "ranked_by": "rank",
+    "matchable_a_records": 161,
+    "hits_at_1": 0.84472049689441,
+    "hits_at_5": 0.9503105590062112,
+    "hits_at_10": 0.9813664596273292,
+    "mrr": 0.8899750870247763,
+    "never_found": 0
+  },
+  "queue_validation": {
+    "candidate_pairs": 3220,
+    "match_pairs": 106,
+    "review_pairs": 493,
+    "no_match_pairs": 2621,
+    "review_queue_size": 493,
+    "review_queue_rate": 0.1531055900621118,
+    "a_records": 161,
+    "a_records_matched": 106
+  },
+  "gold_coverage_by_decision_validation": {
+    "evaluated_gold_pairs": 166,
+    "gold_pairs_as_MATCH": 102,
+    "gold_pairs_as_REVIEW": 58,
+    "gold_pairs_as_NO_MATCH": 6,
+    "recall_match_only": 0.6144578313253012,
+    "recall_match_plus_review": 0.963855421686747,
+    "false_non_matches_sent_to_REVIEW": 58,
+    "false_non_matches_sent_to_NO_MATCH": 6,
+    "note": "A gold pair in REVIEW was retrieved and not rejected; a human would still have to confirm it. It is NOT an automated match, so recall_match_only is the honest automated figure."
+  },
+  "threshold_diagnostic_validation": [
+    {
+      "threshold": 0.05,
+      "match_pairs": 161,
+      "precision": 0.8819875776397516,
+      "recall": 0.8554216867469879,
+      "f1": 0.8685015290519877,
+      "false_merges": 19
+    },
+    {
+      "threshold": 0.2,
+      "match_pairs": 161,
+      "precision": 0.8819875776397516,
+      "recall": 0.8554216867469879,
+      "f1": 0.8685015290519877,
+      "false_merges": 19
+    },
+    {
+      "threshold": 0.4,
+      "match_pairs": 161,
+      "precision": 0.8819875776397516,
+      "recall": 0.8554216867469879,
+      "f1": 0.8685015290519877,
+      "false_merges": 19
+    },
+    {
+      "threshold": 0.6,
+      "match_pairs": 155,
+      "precision": 0.896774193548387,
+      "recall": 0.8373493975903614,
+      "f1": 0.8660436137071651,
+      "false_merges": 16
+    },
+    {
+      "threshold": 0.75,
+      "match_pairs": 148,
+      "precision": 0.9054054054054054,
+      "recall": 0.8072289156626506,
+      "f1": 0.8535031847133758,
+      "false_merges": 14
+    },
+    {
+      "threshold": 0.9,
+      "match_pairs": 138,
+      "precision": 0.9130434782608695,
+      "recall": 0.7590361445783133,
+      "f1": 0.8289473684210527,
+      "false_merges": 12
+    },
+    {
+      "threshold": 0.95,
+      "match_pairs": 129,
+      "precision": 0.9224806201550387,
+      "recall": 0.7168674698795181,
+      "f1": 0.8067796610169492,
+      "false_merges": 10
+    },
+    {
+      "threshold": 0.97,
+      "match_pairs": 119,
+      "precision": 0.9243697478991597,
+      "recall": 0.6626506024096386,
+      "f1": 0.7719298245614035,
+      "false_merges": 9
+    },
+    {
+      "threshold": 0.99,
+      "match_pairs": 99,
+      "precision": 0.9696969696969697,
+      "recall": 0.5783132530120482,
+      "f1": 0.7245283018867924,
+      "false_merges": 3
+    },
+    {
+      "threshold": 0.995,
+      "match_pairs": 81,
+      "precision": 0.9876543209876543,
+      "recall": 0.4819277108433735,
+      "f1": 0.6477732793522267,
+      "false_merges": 1
+    },
+    {
+      "threshold": 0.999,
+      "match_pairs": 47,
+      "precision": 1.0,
+      "recall": 0.28313253012048195,
+      "f1": 0.4413145539906103,
+      "false_merges": 0
+    }
+  ],
+  "end_to_end_validation": {
+    "candidate_recall_at_20": 1.0,
+    "matches_lost_in_blocking": 0,
+    "pair_recall": 0.6144578313253012,
+    "end_to_end_recall": 0.6144578313253012
+  },
+  "baselines_validation": {
+    "exact_normalized_name_match": {
+      "a_records_matched": 0,
+      "a_records": 161,
+      "product_recall": 0.0
+    },
+    "nearest_lexical_candidate": {
+      "a_records_matched": 136,
+      "a_records": 161,
+      "hits_at_1": 0.84472049689441
+    }
+  },
+  "abstention_probe_secondary": {
+    "a_records_probed": 161,
+    "still_above_match_boundary": 26,
+    "abstained": 135,
+    "abstention_rate": 0.8385093167701864
+  },
+  "abstention_probe_note": "Every Abt record has a gold match, so true NO MATCH performance cannot be measured here. This probe removes the gold partner from the pool. Diagnostic only; it was not used to tune anything.",
+  "coefficients": [
+    {
+      "feature": "name_similarity",
+      "coefficient": 3.1871740567722244
+    },
+    {
+      "feature": "price_known_both",
+      "coefficient": 0.7851225150728155
+    },
+    {
+      "feature": "manufacturer_in_name",
+      "coefficient": 0.3672102141068674
+    },
+    {
+      "feature": "description_similarity",
+      "coefficient": 0.2705718328007715
+    },
+    {
+      "feature": "numeric_token_overlap",
+      "coefficient": 0.20911193481772988
+    },
+    {
+      "feature": "model_token_overlap",
+      "coefficient": 0.08451154144383499
+    },
+    {
+      "feature": "token_overlap",
+      "coefficient": -0.6609942137893045
+    },
+    {
+      "feature": "model_token_conflict",
+      "coefficient": -0.7409344585050686
+    },
+    {
+      "feature": "char_similarity",
+      "coefficient": -0.7459843110271399
+    },
+    {
+      "feature": "price_difference",
+      "coefficient": -1.417429304946694
+    }
+  ],
+  "feature_names": [
+    "name_similarity",
+    "description_similarity",
+    "token_overlap",
+    "char_similarity",
+    "model_token_overlap",
+    "model_token_conflict",
+    "numeric_token_overlap",
+    "manufacturer_in_name",
+    "price_difference",
+    "price_known_both"
+  ],
+  "ablation_validation": {
+    "full_model": {
+      "features_removed": [],
+      "match_threshold": 0.9856394449,
+      "precision": 0.9622641509433962,
+      "recall": 0.6144578313253012,
+      "f1": 0.75,
+      "false_merges": 4,
+      "precision_target_reached": true
+    },
+    "without_model_token_group": {
+      "features_removed": [
+        "model_token_overlap",
+        "model_token_conflict"
+      ],
+      "match_threshold": 0.99182421703,
+      "precision": 0.9512195121951219,
+      "recall": 0.46987951807228917,
+      "f1": 0.6290322580645161,
+      "false_merges": 4,
+      "precision_target_reached": true
+    }
+  },
+  "test_split": {
+    "status": "QUARANTINED",
+    "note": "Not loaded or scored by this pipeline; see evaluate_test.py."
+  }
+}

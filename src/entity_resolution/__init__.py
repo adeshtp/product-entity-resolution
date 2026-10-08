@@ -1,0 +1,1 @@
+"""Product entity resolution on the Abt-Buy benchmark."""

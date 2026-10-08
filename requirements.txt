@@ -1,0 +1,8 @@
+# Installed and tested on Python 3.14.3 (macOS arm64).
+pandas==3.0.0
+numpy==2.4.2
+scikit-learn==1.8.0
+scipy==1.17.0
+joblib==1.5.3
+pytest==9.1.1
+streamlit==1.65.0
