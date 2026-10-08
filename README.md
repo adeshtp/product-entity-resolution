@@ -47,6 +47,14 @@ because a wrong merge silently corrupts a catalog.
 normalize -> retrieve candidates -> features -> Logistic Regression -> decision
 ```
 
+**Candidate retrieval is not the same thing as matching.** Retrieval only tries
+to keep the correct Buy record inside the candidate set; it makes no claim about
+whether a pair is a true match. The classifier then decides, pair by pair,
+whether a retrieved candidate really is the same product, and the decision
+policy turns that into MATCH / REVIEW / NO MATCH. The two stages are measured
+separately, because a correct record dropped at retrieval can never be rescued by
+a better classifier.
+
 **Retrieval** is char n-gram TF-IDF over normalized names, cosine similarity,
 top-20, against the whole Buy catalog. Character n-grams survive the spelling
 drift between catalogs where word tokens do not. It removes 98.17% of the
@@ -107,13 +115,27 @@ split was read once, at the end.
 ## Layout
 
 ```
-src/entity_resolution/   data, normalize, blocking, similarity, features,
-                         pairs, model, evaluation, train, evaluate_test
+src/entity_resolution/
+  data.py           loading, entity groups, split
+  normalize.py      text cleaning, model/number tokens, price parsing
+  blocking.py       candidate retrieval (char n-gram TF-IDF, top-20)
+  features.py       TF-IDF similarity objects and the ten pair features
+  pairs.py          training positives and hard-negative mining
+  model.py          Logistic Regression and the MATCH/REVIEW/NO MATCH policy
+  evaluation.py     pair, product and coverage metrics; error categories
+  train.py          pipeline: fit, evaluate on validation, write reports
+  evaluate_test.py  frozen evaluation of the test split (run once)
 app/streamlit_app.py     local demo
+models/matcher.joblib    fitted pipeline, retriever and similarity objects
 reports/                 metrics.json, test_metrics.json, error_analysis.csv
 docs/                    methodology.md, learning_notes.md
-tests/                   169 tests
+tests/                   168 tests
+data/                    README.md (download instructions); raw data is
+                         gitignored and fetched separately
 ```
+
+The similarity objects live in `features.py` rather than a module of their own
+because they exist only to produce two of the ten features.
 
 ## Running it
 
@@ -138,7 +160,7 @@ files.
 
 ## Tests
 
-169 tests covering normalization, retrieval, features, the matcher and decision
+168 tests covering normalization, retrieval, features, the matcher and decision
 policy, evaluation definitions, and the Streamlit app. The app tests run the real
 script through Streamlit's `AppTest`, so a rendering error fails in the suite
 rather than in front of you.
