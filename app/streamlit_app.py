@@ -11,7 +11,6 @@ text is templated to look like evidence.
 
 No API keys, no external services, no network access.
 """
-from __future__ import annotations
 
 import sys
 from pathlib import Path

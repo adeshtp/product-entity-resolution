@@ -11,7 +11,6 @@ from entity_resolution.blocking import reduction_ratio, remaining_candidate_frac
 from entity_resolution.data import load_splits
 from entity_resolution.evaluate_test import FROZEN_MATCH_THRESHOLD, FROZEN_REVIEW_THRESHOLD
 from entity_resolution.evaluation import (
-    ERROR_CATEGORIES,
     PAIR_RECALL_CEILING,
     abstention_probe,
     classify_outcome,
@@ -525,20 +524,6 @@ def test_error_analysis_covers_both_splits_with_real_rows():
         "rejected_despite_being_top",
         "gold_never_retrieved",
     }
-
-
-def test_categories_are_defined_precisely():
-    """Each category must state what it means, so a reviewer cannot misread it."""
-    assert set(ERROR_CATEGORIES) == {
-        "false_merge",
-        "missed_match",
-        "gold_not_ranked_first",
-        "gold_never_retrieved",
-    }
-    assert "not gold" in ERROR_CATEGORIES["false_merge"]
-    assert "Not a false negative" in ERROR_CATEGORIES["missed_match"]
-    assert "Retrieval worked, matching failed" in ERROR_CATEGORIES["gold_not_ranked_first"]
-    assert "only true retrieval" in ERROR_CATEGORIES["gold_never_retrieved"]
 
 
 def test_classify_outcome_distinguishes_retrieval_from_matching_errors():

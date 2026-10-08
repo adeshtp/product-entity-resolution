@@ -208,24 +208,6 @@ def gold_coverage_by_decision(
     }
 
 
-ERROR_CATEGORIES = {
-    "false_merge": "MATCH emitted on a pair that is not gold. The costly error.",
-    "missed_match": (
-        "The top candidate is gold but the decision was not MATCH, split into "
-        "correct_but_sent_to_review and rejected_despite_being_top. Not a false "
-        "negative in the usual sense: the system never claimed a non-match."
-    ),
-    "gold_not_ranked_first": (
-        "A gold partner was retrieved but the matcher preferred another "
-        "candidate. Retrieval worked, matching failed."
-    ),
-    "gold_never_retrieved": (
-        "No gold partner is in the candidate list. The only true retrieval "
-        "failure, and no matcher can recover from it."
-    ),
-}
-
-
 def classify_outcome(top_id_b, decision, gold_b, gold_in_candidates):
     """One label per product.
 
